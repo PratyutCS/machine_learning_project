@@ -4,7 +4,7 @@ import pandas as pd
 
 st.set_page_config(page_title="Breast Cancer Diagnosis", page_icon=":memo:", layout="wide")
 
-model = joblib.load('./model.pkl')
+model = joblib.load('./files/model.pkl')
 
 st.title("Breast Cancer Diagnosis")
 
