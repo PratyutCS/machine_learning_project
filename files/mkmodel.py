@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 import joblib
 
 dataframe=pd.read_csv("./data.csv")
@@ -14,7 +13,7 @@ X = dataframe.loc[:,dataframe.columns[1:]]
 y = dataframe['diagnosis']
 
 # Decision Tree
-dt = DecisionTreeClassifier()
-dt.fit(X, y)
+rf = RandomForestClassifier()
+rf.fit(X, y)
 
-joblib.dump(dt, 'model.pkl')
+joblib.dump(rf, 'model.pkl')

@@ -8,7 +8,6 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, roc_auc_score, roc_curve, auc
-import joblib
 
 dataframe=pd.read_csv("./data.csv")
 
@@ -102,6 +101,17 @@ print("Logistic Regression AUROC: {:.2f}".format(aur_lr))
 print("KNN Accuracy: {:.2f}".format(acc_knn))
 print("KNN AUROC: {:.2f}".format(aur_knn))
 
+data = {'dt':acc_dt, 'rf':acc_rf, 'lr':acc_lr,'knn':acc_knn}
+
+mname = list(data.keys())
+values = list(data.values())
+plt.bar(mname, values, color ='blue',width = 0.4)
+ 
+plt.xlabel("models")
+plt.ylabel("accuracy")
+plt.title("model Comparision")
+plt.show()
+
 fpr_dt, tpr_dt, thresholds = roc_curve(y_test, y_pred_dt)
 roc_auc = auc(fpr_dt, tpr_dt)
 print("AUROC: {:.2f}".format(roc_auc))
@@ -162,5 +172,3 @@ plt.ylabel('True Positive Rate')
 plt.title('Receiver operating characteristic (ROC) curve KNN')
 plt.legend(loc="lower right")
 plt.show()
-
-joblib.dump(dt, 'model.pkl')
