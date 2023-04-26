@@ -86,9 +86,9 @@ def app():
 		result = model.predict(df)
 		st.subheader('Diagnosis')
 		if(result==1):
-		   st.write('Malignant')
+		   st.write('Malignant: CANCEROUS')
 		else:
-		   st.write('Benign')
+		   st.write('Benign: NON-CANCEROUS')
 	   
 if __name__ == '__main__':
     result = app()
